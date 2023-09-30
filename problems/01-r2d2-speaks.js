@@ -1,7 +1,7 @@
 /*
     Write a function r2d2Speaks that takes in a series of 0s and 1s.
     The function should console.log a 'beep' for a 0 followed by a pause of 400 ms and a 'boop' for a 1 followed by 800 ms.
-    
+
     let code = [0, 1, 1, 0];
     r2d2Speaks(code);
         print 'beep'
@@ -15,11 +15,28 @@
 */
 
 function r2d2Speaks(code) {
-    // Your code here 
+    // Your code here
+    if (code.length === 1) {
+        if(code[0] === 0) {
+            console.log('beep');
+            setTimeout(() => {return;}, 400);
+        } else if (code[0] === 1) {
+            console.log('boop');
+            setTimeout(() => {return;}, 800);
+        }
+    } else {
+        if(code[0] === 0) {
+            console.log('beep');
+            setTimeout(() => r2d2Speaks(code.slice(1)), 400);
+        } else if (code[0] === 1) {
+            console.log('boop');
+            setTimeout(() => r2d2Speaks(code.slice(1)), 800)
+        }
+    }
 }
 
-let code = [0, 1, 1, 0];
-r2d2Speaks(code);
+// let code = [0, 1, 1, 0];
+// r2d2Speaks(code);
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
@@ -27,4 +44,3 @@ try {
 } catch (e) {
     module.exports = null;
 }
-
